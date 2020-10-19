@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <locale.h>
 /*
 1. Implemente uma função que receba dois vetores de inteiros v1 e v2,
 mais um inteiro N com o tamanho dos vetores.
@@ -9,14 +9,13 @@ onde o elemento na posição i de v3 é a soma dos elementos na posição i
 de v1 e v2.
 
 Sua função deve ter a seguinte declaração:
+
 int * soma_vetores(int *v1, int *v2, int N);
-Para testar seu programa, crie uma função main() que chame sua função
-soma_vetores e imprima os valores somados.
+
+Para testar seu programa, crie uma função main() que chame
+sua função soma_vetores e imprima os valores somados.
 
 */
-
-//pronta...ish
-
 int * soma_vetores(int *v1, int *v2, int N){
 
     int *v3 = malloc(N * sizeof(int));
@@ -28,9 +27,9 @@ int * soma_vetores(int *v1, int *v2, int N){
 
 int main()
 {
+    setlocale(LC_ALL,"");
     int v1[5],v2[5],i2, N;
     int* v3;
-
     for(i2=0;i2<=4;i2++){
         v1[i2] = 3;
     }
@@ -38,13 +37,8 @@ int main()
         v2[i2] = 7;
     }
     N = sizeof(v1)/sizeof(v1[0]);
-
     v3 = soma_vetores(v1,v2,N);
-
     for (int i = 0; i < N; i++)
-        printf("Valor na posicao %d: %d\n", i, v3[i]);
+        printf("Valor na posição %d: %d\n", i, v3[i]);
     free(v3);
-
-    printf(" \n Hello world!\n");
-    return 0;
 }
