@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-//#include <string.h>
 
 /*
 6. Faça um programa que simule ’virtualmente’
@@ -20,42 +19,52 @@ int main()
 
     int tam_memoria, endereco, opcao,  i;
     int controle = 0;
-    char dado[50];
-    char *p;
 
+    //criando a memoria
     printf("Defina o tamanho da memória: \n");
     scanf("%d", &tam_memoria);
 
-    //criando a memoria...ish
-    char *vetor_memoria;
-    vetor_memoria = (char*)calloc(tam_memoria, sizeof(char));
+    int *vetor_memoria;
+    vetor_memoria = (int*)calloc(tam_memoria, sizeof(int));
+
+    for(i=0;i<tam_memoria;i++){
+        printf("\n %d \n", vetor_memoria[i]);
+    }
+
+    if(vetor_memoria == NULL){
+        printf("\n Erro de alocacao de memoria \n");
+        exit(1);
+    }
 
     while(controle == 0){
         printf("\n Lista de opções: \n");
-        printf("1 - inserir um dado em um determinado endereço. \n");
-        printf("2 - consultar o dado contido em um determinado endereço. \n");
-        printf("3 - sair \n");
+        printf("\n 1 - Inserir um dado em um determinado endereço. \n");
+        printf("\n 2 - Consultar o dado contido em um determinado endereço. \n");
+        printf("\n 3 - Sair \n");
         printf("Escolha uma opção: \n");
         scanf("%d", &opcao);
         if (opcao == 1){
-            printf("Digite o dado que quer inserir no vetor: \n");
-            scanf("%s",dado);
-            printf("Digite o endereço no qual quer inserir o valor: \n");
-            printf("Enderecos de sua memoria são de 0 até o valor que digitou previamente menos 1 \n");
-            scanf("%d", endereco);
-            //ate aqui funciona
+            printf("\n Entre com o endereco onde quer inserir o dado : ");
+            scanf("%d", &endereco);
             for(i=0;i<tam_memoria;i++){
-                //aver q nao eh assim
                 if(i == endereco){
-                    vetor_memoria[i] = dado;
+                    printf("\n Entre com o valor inteiro para o índice %d: ", i);
+                    scanf("%d", &vetor_memoria[i]);
+                }
+            }
+            //lista o conteudo existentes na memoria:
+            for(i=0;i<1;i++){
+                printf("\n MEMORIA: ");
+                for(i=0;i<tam_memoria;i++){
+                    printf("\n Conteúdo atual do índice %d: %d \n", i, vetor_memoria[i]);
                 }
             }
         }else if (opcao == 2){
             printf("Digite o endereco do dado a ser consultado na sua memoria: \n");
-            scanf("%d", endereco);
+            scanf("%d", &endereco);
             for(i=0;i<tam_memoria;i++){
                 if(i == endereco){
-                    printf(" \n Dado contigo no endereco %d : %s \n", i, vetor_memoria[i]);
+                    printf(" \n Dado contido no endereco %d : %d \n", i, vetor_memoria[i]);
                 }
             }
         }else if(opcao == 3){
@@ -66,7 +75,5 @@ int main()
             printf("\n Você saiu \n");
             controle = 1;
         }
-
     }
-
 }
