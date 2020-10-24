@@ -22,51 +22,32 @@ e imprima na tela.
 #include <stdlib.h>
 #include <string.h>
 
-/*
-a-ok
-b-
-c-
-d-
-
-*/
-
+//letra a
 typedef struct produto{
     int codigo_id_produto, qtd_disp_estoque;
     char nome[50];
     float preco_de_venda;
 }Produto;
 
-
-
 int main()
 {
     int n, i, maiorQTDestoque = 0;
     float maiorPreco=0.0;
 
+    //letra b
     printf("Digite a quantidade de produtos a serem cadastrados: \n");
     scanf("%d", &n);
 
-    //Produto prod[n]; //vetor prod de n posicoes do tipo Produto
-
     Produto *p = malloc(n*sizeof(Produto));
-
-    //int qtd;
-    //scanf("%d", &qtd);
-    // CARRO *carros = malloc(qtd * sizeof(struct CARRO));
-    //free(carros); //só para usar a variável, neste caso não precisa
 
     for(i=0;i<n;i++){
         printf("\n Entre com o Codigo do Produto: ");
-        //scanf("%d", &p->codigo_id_produto);
         scanf("%d", &p[i].codigo_id_produto);
         printf("\n Entre com a quantidade em Estoque do Produto: ");
-        //scanf("%d", &p->qtd_disp_estoque);
         scanf("%d", &p[i].qtd_disp_estoque);
         printf("\n Entre com o nome do produto: ");
-        //scanf("%s", p->nome);
         scanf("%s", p[i].nome);
         printf("\n Preço: ");
-        //scanf("%f", &p->preco_de_venda);
         scanf("%f", &p[i].preco_de_venda);
     }
 
@@ -108,12 +89,6 @@ int main()
 
     printf("\n ====== DADOS DIGITADOS ====== \n");
     for(i=0;i<n;i++){
-
-       // printf("\n Produto %d:", i);
-       // printf("\n Codigo: %d", p->codigo_id_produto);
-       // printf("\n Quantidade em estoque: %d", p->qtd_disp_estoque);
-       // printf("\n Nome: %s", p->nome);
-       // printf("\n Preço: %.2f", p->preco_de_venda);
         printf("\n ================");
         printf("\n Produto %d:", i);
         printf("\n Codigo: %d", p[i].codigo_id_produto);
@@ -124,126 +99,3 @@ int main()
     }
 
 }
-
-/*
-funciona 02
-//cadastra os produtos
-//string nao aceita espaco nao sei porque
-
-
-*/
-
-
-/*
-//funciona 01
-//1 elemento para a estrutura
-
-
-int main()
-{
-    int n, i;
-    int maiorPreco=0, maiorQTDestoque=0;
-
-    Produto *p;
-
-    p = (Produto*)malloc(sizeof(Produto));
-
-    printf("\n Cadastro de Produtos \n");
-    printf("\n Entre com o Codigo do Produto: ");
-    scanf("%d", &p->codigo_id_produto);
-
-    printf("\n Entre com a quantidade em Estoque do Produto: ");
-    scanf("%d", &p->qtd_disp_estoque);
-
-    printf("\n Entre com o nome do produto: ");
-    scanf("%s", p->nome);
-
-    printf("\n Preço: ");
-    scanf("%f", &p->preco_de_venda);
-
-    printf("\n ====== DADOS DIGITADOS ====== \n");
-    printf("\n Codigo: %d", p->codigo_id_produto);
-    printf("\n Quantidade em estoque: %d", p->qtd_disp_estoque);
-    printf("\n Nome: %s", p->nome);
-    printf("\n Preço: %.2f", p->preco_de_venda);
-}
-
-*/
-
-/*
-//antigo
-
-
-    PRODUTO *ponteiroProduto;
-
-    printf("Digite a quantidade de produtos a serem cadastrados: \n");
-    scanf("%d", &n);
-
-    //ponteiroProduto = malloc(n*sizeof(PRODUTO*));
-
-    ponteiroProduto = (PRODUTO*)malloc(n*sizeof(PRODUTO));
-
-    //for(i=0;i<n;i++){
-      //  ponteiroProduto[i] = malloc(sizeof(PRODUTO));
-    //}
-
-    //CONSERTAR A DECLARACAO DAS ESTRUTURAS
-    //esta invadindo memoria
-    //struct produto conj_produtos[n];
-
-    for(i=0;i<n;i++){
-        printf("\n--------------------------------\n");
-        printf("\n Por favor digite as informacoes do produto: \n");
-        printf("\n Digite o codigo do produto: \n");
-        scanf("%d", ponteiroProduto[i]->codigo_id_produto);
-        printf("\n Digite o nome do produto: \n");
-        //fflush(stdin);
-        //fgets(ponteiroProduto[i]->nome, 50, stdin);
-        scanf("%s", ponteiroProduto[i]->nome)
-        printf("\n Digite a quantidade disponivel em estoque: \n");
-        scanf("%d", ponteiroProduto[i]->qtd_disp_estoque);  //erro aqui
-        printf("\n Digite o Preco em Reais: \n");
-        scanf("%f", ponteiroProduto[i]->preco_de_venda);
-        printf("\n--------------------------------\n");
-    }
-
-    //define qual produto com o maior preco
-    for (i=0;i<n;i++) {
-        if(ponteiroProduto[i]->preco_de_venda > maiorPreco) {
-            maiorPreco = ponteiroProduto[i]->preco_de_venda;
-        }
-    }
-
-    //produto com maior preco
-    for (i=0;i<n;i++) {
-        if(ponteiroProduto[i]->preco_de_venda == maiorPreco) {
-            printf("\n Produto com maior preco: \n");
-            printf("Codigo: %d \n", ponteiroProduto[i]->codigo_id_produto);
-            printf("Nome: %s \n", ponteiroProduto[i]->nome);
-            printf("Preco: %f \n", ponteiroProduto[i]->preco_de_venda);
-            printf("Quantidade disponivel em estoque: %d \n", ponteiroProduto[i]->qtd_disp_estoque);
-        }
-    }
-
-    //define qual produto com maior qtd de estoque
-    for (i=0;i<n;i++) {
-        if(ponteiroProduto[i]->qtd_disp_estoque > maiorQTDestoque) {
-            maiorQTDestoque = ponteiroProduto[i]->qtd_disp_estoque;
-        }
-    }
-
-    //produto com maior qtd de estoque
-    for (i=0;i<n;i++) {
-        if(ponteiroProduto[i]->qtd_disp_estoque == maiorQTDestoque) {
-            printf("\n Produto com maior quantidade disponivel de estoque: \n");
-            printf("Codigo: %d \n", ponteiroProduto[i]->codigo_id_produto);
-            printf("Nome: %s \n", ponteiroProduto[i]->nome);
-            printf("Preco: %f \n", ponteiroProduto[i]->preco_de_venda);
-            printf("Quantidade disponivel em estoque: %d \n", ponteiroProduto[i]->qtd_disp_estoque);
-        }
-    }
-
-
-
-*/
-
