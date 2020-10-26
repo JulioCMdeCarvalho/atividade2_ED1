@@ -31,6 +31,10 @@ João    6666-6666
 #define MAX 3 //numero máximo de BLOCKs que podem ser alocados
 #define BLOCK 5
 
+/*
+realloc ok
+
+*/
 
 typedef struct _contato{
     char nome[30];
@@ -70,13 +74,11 @@ int main(void)
     }
 }
 
-
 //letra a
 //Inicializa a agenda
 void inic_agenda(void)
 {
     agenda = (contato **)malloc(BLOCK*sizeof(contato*));
-    num_blocos = 1;
 }
 
 //letra b
@@ -124,6 +126,11 @@ int item_menu(void)
     return c;
 }
 
+/*
+letra c
+Quando contato for excluido o ultimo contado da lista passa a ocupar seu lugar.
+*/
+
 /* Apaga um contato */
 void deleta(void)
 {
@@ -144,8 +151,7 @@ void deleta(void)
 
     if (num_contatos<(num_blocos * BLOCK))
     {
-        agenda =(contato **)realloc(agenda,(num_blocos - 1)*
-        sizeof(contato *));
+        agenda =(contato **)realloc(agenda,(num_blocos - 1)*sizeof(contato *));
     }
 }
 

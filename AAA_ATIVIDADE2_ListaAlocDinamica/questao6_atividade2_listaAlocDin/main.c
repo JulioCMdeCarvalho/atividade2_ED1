@@ -27,6 +27,7 @@ int main()
     int *vetor_memoria;
     vetor_memoria = (int*)calloc(tam_memoria, sizeof(int));
 
+    //imprimindo o estado atual da memoria
     for(i=0;i<tam_memoria;i++){
         printf("\n %d \n", vetor_memoria[i]);
     }
@@ -35,7 +36,6 @@ int main()
         printf("\n Erro de alocacao de memoria \n");
         exit(1);
     }
-
     while(controle == 0){
         printf("\n Lista de opções: \n");
         printf("\n 1 - Inserir um dado em um determinado endereço. \n");
@@ -76,4 +76,6 @@ int main()
             controle = 1;
         }
     }
+
+    free(vetor_memoria);
 }

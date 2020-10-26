@@ -47,7 +47,7 @@ int main()
         scanf("%d", &p[i].qtd_disp_estoque);
         printf("\n Entre com o nome do produto: ");
         scanf("%s", p[i].nome);
-        printf("\n Preço: ");
+        printf("\n Preco: ");
         scanf("%f", &p[i].preco_de_venda);
     }
 
@@ -90,12 +90,13 @@ int main()
     printf("\n ====== DADOS DIGITADOS ====== \n");
     for(i=0;i<n;i++){
         printf("\n ================");
-        printf("\n Produto %d:", i);
+        printf("\n ==== Produto %d ==== ", i);
         printf("\n Codigo: %d", p[i].codigo_id_produto);
         printf("\n Quantidade em estoque: %d", p[i].qtd_disp_estoque);
         printf("\n Nome: %s", p[i].nome);
-        printf("\n Preço: %.2f", p[i].preco_de_venda);
+        printf("\n Preco: %.2f", p[i].preco_de_venda);
         printf("\n ================");
     }
 
+    free(p);
 }
